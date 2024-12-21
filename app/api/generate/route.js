@@ -6,32 +6,19 @@ export async function POST(request) {
     }
 
     try {
-        const { prompt } = await request.json();
-        
-        // Initialize the model with explicit configuration
         const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-        const model = genAI.getGenerativeModel({ 
-            model: "gemini-pro",
-            generationConfig: {
-                temperature: 0.9,
-                topK: 1,
-                topP: 1,
-                maxOutputTokens: 2048,
-            },
-        });
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-        // Generate content
-        const generation = await model.generateContent(prompt);
-        const result = await generation.response;
-        const text = result.text();
+        const body = await request.json();
+        const prompt = body.prompt;
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = response.text();
 
         return Response.json({ text });
-        
     } catch (error) {
-        console.error('API Error:', error);
-        return Response.json(
-            { error: 'Error connecting to Gemini API: ' + error.message }, 
-            { status: 500 }
-        );
+        console.error('Generation error:', error);
+        return Response.json({ error: 'Failed to generate content' }, { status: 500 });
     }
 } 
