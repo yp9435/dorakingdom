@@ -68,7 +68,7 @@ const Nav = () => {
             {user ? (
               <>
                 <Link 
-                  href="/create-mission" 
+                  href="/create" 
                   className="relative inline-flex items-center px-6 py-2.5 
                     bg-purple-600 hover:bg-purple-500
                     text-white font-semibold text-sm rounded-lg
@@ -126,7 +126,7 @@ const Nav = () => {
                       My Profile
                     </Link>
                     <Link
-                      href="/create-mission"
+                      href="/create"
                       className="block px-4 py-2 text-sm text-purple-300 hover:bg-purple-800 transition-colors"
                       onClick={() => setToggleDropdown(false)}
                     >

@@ -64,7 +64,7 @@ const MainHome = () => {
 
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          <Link href="/create-mission" 
+          <Link href="/create" 
             className="bg-purple-600/50 hover:bg-purple-600/70 p-6 rounded-xl
                      shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)]
                      border-2 border-purple-400/50 transition-all duration-300 hover:-translate-y-2
