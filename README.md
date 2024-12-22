@@ -1,3 +1,5 @@
+## DoraKingdom
+
 ## Inspiration  
 As students, we know how hard it can be to stay motivated and focused on our goals. To get a sense of the challenges, I made a poll in a Discord Sever full of university students, and **70% of them felt that focusing and losing motivation was their biggest challenge**. Many students feel disconnected from their learning, and it’s tough to stay on track without a sense of achievement. **63% of students feel disengaged in school**, and that's a problem we wanted to solve. We created **DoraKingdom** to make learning fun, social, and rewarding, so students can stay motivated and connected while reaching their goals.
 
