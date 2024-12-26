@@ -8,6 +8,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import Mission from '@components/Mission'
 import { collection, getDocs, getDoc, doc } from 'firebase/firestore'
 import { db } from '@/firebase/firebaseinit' // make sure this is properly initialized
+import Checkin from '@components/Checkin'
 
 const MainHome = () => {
   const [user, setUser] = useState(null)
@@ -50,6 +51,7 @@ const MainHome = () => {
 
   return (
     <div className="min-h-screen px-4 py-20">
+      <Checkin />
       {/* Welcome Section */}
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
