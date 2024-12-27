@@ -14,11 +14,7 @@ export async function createUserDocument(user) {
     const userSnap = await getDoc(userRef);
     
     if (userSnap.exists()) {
-      console.log("User already exists, updating lastLogin");
-      // Only update lastLogin for existing users
-      await setDoc(userRef, {
-        lastLogin: new Date()
-      }, { merge: true });
+      console.log("User already exists");
       return false;
     }
 

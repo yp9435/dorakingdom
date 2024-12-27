@@ -55,7 +55,7 @@ const MainHome = () => {
       {/* Welcome Section */}
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-        <h1 className="heading text-3xl md:text-6xl lg:text-7xl text-white mb-6 mt-24 
+          <h1 className="heading text-3xl md:text-6xl lg:text-7xl text-white mb-6 mt-24 
                          tracking-tight animate-fadeIn">
             Welcome back, {user?.displayName || 'Explorer'}! 👑
           </h1>
@@ -105,6 +105,115 @@ const MainHome = () => {
             <p className="text-purple-200">Track your progress and view earned badges.</p>
           </Link>
         </div>
+        
+        {/* Weekly Challenge Section */}
+        <div className="mb-16">
+          <Link href="/weekly" className="block">
+            <div className="relative rounded-2xl overflow-hidden
+                          border-2 border-purple-500/50
+                          shadow-[0_0_25px_rgba(168,85,247,0.2)]
+                          hover:shadow-[0_0_35px_rgba(168,85,247,0.4)]
+                          hover:border-purple-400
+                          transition-all duration-300
+                          bg-gradient-to-br from-purple-900/20 to-purple-800/20
+                          group transform hover:scale-[1.01]">
+              {/* Background Image*/}
+              <div className="absolute inset-0">
+                <div className="relative w-full h-full overflow-hidden">
+                  <div 
+                    className="absolute inset-0 opacity-75"
+                    style={{
+                      backgroundImage: `url('/assets/weekly.jpg')`,
+                      backgroundSize: '200px 200px',
+                      backgroundRepeat: 'repeat',
+                      transform: 'scale(1.1)',
+                    }}
+                  />
+                </div>
+              </div>
+              
+              {/* Content Container */}
+              <div className="relative p-8">
+                
+                
+                {/* Header Section */}
+                <div className="flex items-center justify-between mb-8">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                      <h2 className="text-2xl md:text-6xl text-white heading 
+                                   bg-clip-text text-transparent drop-shadow-lg">
+                        Weekly Challenge
+                      </h2>
+                      <span className="text-2xl animate-bounce filter drop-shadow-lg">🎯</span>
+                    </div>
+                    <p className="text-purple-100 text-sm md:text-base drop-shadow">
+                      Complete these tasks to earn special rewards!
+                    </p>
+                  </div>
+                  
+                  {/* Timer Section */}
+                  <div className="text-right bg-purple-900/60 px-4 py-2 rounded-xl 
+                                border border-purple-500/30 backdrop-blur-sm
+                                shadow-lg">
+                    <div className="text-purple-200 text-xs uppercase tracking-wider font-medium mb-1">
+                      Time Remaining
+                    </div>
+                    <div className="text-white font-bold flex items-center gap-2">
+                      <span className="text-purple-400">⏳</span>
+                      <span>5d 12h</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Rewards Section */}
+                <div className="relative">
+                  <div className="bg-purple-900/60 rounded-xl p-6 
+                                border border-purple-600/20 backdrop-blur-md
+                                transform hover:scale-[1.01] transition-all duration-300
+                                hover:border-purple-500/40 hover:shadow-xl
+                                shadow-lg">
+                    <h4 className="text-white font-semibold mb-4 flex items-center gap-2">
+                      <span className="text-xl filter drop-shadow-lg">🏆</span>
+                      <span className="bg-gradient-to-r from-yellow-200 to-yellow-500 
+                                     bg-clip-text text-transparent">
+                        Rewards
+                      </span>
+                    </h4>
+                    
+                    <div className="flex flex-wrap items-center gap-6">
+                      {/* Gold Badge Reward */}
+                      <div className="flex items-center gap-3 bg-purple-800/50 px-4 py-2 
+                                    rounded-lg border border-purple-500/20
+                                    hover:border-purple-400/40 transition-colors duration-300
+                                    shadow-lg backdrop-blur-sm">
+                        <div className="relative">
+                          <span className="text-2xl transform hover:scale-110 transition-transform duration-300
+                                         inline-block drop-shadow-lg">🥇</span>
+                          <div className="absolute -inset-1 bg-yellow-500/20 rounded-full blur-sm"></div>
+                        </div>
+                        <div className="text-purple-100">
+                          <span className="font-bold text-yellow-400">1×</span> Gold Badge
+                        </div>
+                      </div>
+                      
+                      {/* Bonus Points Reward */}
+                      <div className="flex items-center gap-3 bg-purple-800/50 px-4 py-2 
+                                    rounded-lg border border-purple-500/20
+                                    hover:border-purple-400/40 transition-colors duration-300
+                                    shadow-lg backdrop-blur-sm">
+                        <span className="text-2xl animate-pulse drop-shadow-lg">🌟</span>
+                        <div className="text-purple-100">
+                          <span className="font-bold text-yellow-400">50</span> Bonus Points
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+
 
         {/* Explore Section */}
         <div className="mt-20">

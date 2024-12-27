@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from "react";
 import EmojiPicker from 'emoji-picker-react';
 import { db } from '@/firebase/firebaseinit';
-import { doc, setDoc, updateDoc, arrayUnion, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, updateDoc, arrayUnion, serverTimestamp, getDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
+import Popup from '@/components/Popup';
 
 function Create({ user }) {
   const router = useRouter();
@@ -21,6 +22,7 @@ function Create({ user }) {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -93,17 +95,21 @@ function Create({ user }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submit clicked");
     
     if (!auth.currentUser) {
+      console.log("No auth user");
       alert('Please sign in to create a mission');
       return;
     }
 
     try {
       setIsLoading(true);
+      console.log("Starting mission creation...");
 
       // Generate a new mission ID
       const missionId = crypto.randomUUID();
+      console.log("Generated missionId:", missionId);
 
       // 1. Add to missions collection (public missions database)
       const missionData = {
@@ -122,16 +128,29 @@ function Create({ user }) {
         },
         createdAt: serverTimestamp()
       };
+      console.log("Mission data:", missionData);
 
+      // Add to missions collection
+      console.log("Adding to missions collection...");
       await setDoc(doc(db, 'missions', missionId), missionData);
+      console.log("Added to missions collection");
 
       // 2. Add to user's personal database
       const userRef = doc(db, 'users', auth.currentUser.uid);
+      console.log("Getting user data...");
       
-      // Add mission ID to user's missions array
+      // Get current user data to check badges
+      const userDoc = await getDoc(userRef);
+      const currentBadges = userDoc.data()?.badges || { silver: 0 };
+      console.log("Current badges:", currentBadges);
+      
+      // Add mission ID to user's missions array and award silver badge
+      console.log("Updating user data...");
       await updateDoc(userRef, {
-        missions: arrayUnion(missionId)
+        missions: arrayUnion(missionId),
+        'badges.silver': (currentBadges.silver || 0) + 1
       });
+      console.log("Updated user missions and badges");
 
       // Add quest progress to user's personal quests tracking
       await updateDoc(userRef, {
@@ -146,9 +165,19 @@ function Create({ user }) {
           }
         }
       });
+      console.log("Updated user mission progress");
 
-      // Navigate to the mission page
-      router.push(`/mission/${missionId}`);
+      // Show success popup first
+      console.log("About to show popup");
+      setShowPopup(true);
+      console.log("Popup state set to:", true);
+      
+      // Navigate to the mission page after a longer delay
+      setTimeout(() => {
+        console.log("Navigating to mission page...");
+        setShowPopup(false); // Close popup before navigation
+        router.push(`/mission/${missionId}`);
+      }, 3000); // Increased to 3 seconds to ensure popup is visible
       
     } catch (error) {
       console.error('Error creating mission:', error);
@@ -334,6 +363,14 @@ function Create({ user }) {
           </button>
         </form>
       </div>
+
+      {showPopup && (
+        <Popup
+          title="Mission Created! 🎉"
+          message={`Congratulations! You've created "${mission.title}" and earned a silver badge! 🥈`}
+          onClose={() => setShowPopup(false)}
+        />
+      )}
     </div>
   );
 }

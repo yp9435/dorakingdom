@@ -1,13 +1,13 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { getAuth } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc, increment, serverTimestamp } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, increment, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/firebase/firebaseinit';
 import Image from 'next/image';
 
 const Checkin = () => {
   const [showAnimation, setShowAnimation] = useState(false);
-  const [hasCheckedIn, setHasCheckedIn] = useState(true);
+  const [hasCheckedIn, setHasCheckedIn] = useState(false); // Changed initial state to false
   const [points, setPoints] = useState(0);
   const auth = getAuth();
   const audioRef = useRef(null);
@@ -24,47 +24,31 @@ const Checkin = () => {
       try {
         const userRef = doc(db, 'users', auth.currentUser.uid);
         const userDoc = await getDoc(userRef);
+        const userData = userDoc.data();
         
-        if (!userDoc.exists()) {
-          console.log("Creating new user document");
-          await setDoc(userRef, {
+        if (!userData) {
+          // Initialize user document if it doesn't exist
+          await updateDoc(userRef, {
             points: 0,
             badges: { bronze: 0, silver: 0, gold: 0 },
-            lastLogin: serverTimestamp(),
-            email: auth.currentUser.email,
-            image: auth.currentUser.photoURL,
-            username: auth.currentUser.displayName || 'Anonymous',
-            missions: [],
-            userMissions: {},
-            quests: {}
+            lastLogin: null
           });
-          // Fetch the document again after creation
-          const newUserDoc = await getDoc(userRef);
-          const userData = newUserDoc.data();
-          setPoints(userData?.points || 0);
-          handleCheckin();
+          setHasCheckedIn(false);
           return;
         }
-
-        const userData = userDoc.data();
-        console.log("User data:", userData);
         
+        // Get last login date and current date
         const lastLogin = userData?.lastLogin?.toDate();
         const today = new Date();
-        console.log("Last login:", lastLogin);
-        console.log("Today:", today);
         
+        // Check if last login was today (compare dates only)
         const hasCheckedInToday = lastLogin && 
-          lastLogin.toDateString() === today.toDateString();
+          lastLogin.getDate() === today.getDate() &&
+          lastLogin.getMonth() === today.getMonth() &&
+          lastLogin.getFullYear() === today.getFullYear();
         
-        console.log("Has checked in today?", hasCheckedInToday);
         setHasCheckedIn(hasCheckedInToday);
         setPoints(userData?.points || 0);
-
-        if (!hasCheckedInToday) {
-          console.log("Triggering check-in");
-          handleCheckin();
-        }
       } catch (error) {
         console.error('Error checking daily status:', error);
       }
@@ -72,32 +56,28 @@ const Checkin = () => {
 
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log("User logged in:", user.uid);
         checkDailyStatus();
       }
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [auth]); // Added auth dependency
 
   const handleCheckin = async () => {
-    if (!auth.currentUser || hasCheckedIn) {
-      console.log("Check-in blocked:", { isAuthed: !!auth.currentUser, hasCheckedIn });
-      return;
-    }
+    if (!auth.currentUser || hasCheckedIn) return;
 
     try {
       const userRef = doc(db, 'users', auth.currentUser.uid);
       
       // Get current user data to get current badge count
       const userDoc = await getDoc(userRef);
-      const currentBadges = userDoc.data()?.badges || { bronze: 0, silver: 0, gold: 0 };
-      console.log("Current badges:", currentBadges);
+      const userData = userDoc.data();
+      const currentBadges = userData?.badges || { bronze: 0, silver: 0, gold: 0 };
       
       // Update user document
       await updateDoc(userRef, {
         points: increment(1),
-        'badges': {
+        badges: {
           ...currentBadges,
           bronze: (currentBadges.bronze || 0) + 1,
           silver: currentBadges.silver || 0,
@@ -105,11 +85,12 @@ const Checkin = () => {
         },
         lastLogin: serverTimestamp(),
       });
-      console.log("Updated user document");
 
       // Play sound
-      audioRef.current.currentTime = 0;
-      audioRef.current.play();
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch(error => console.error('Error playing audio:', error));
+      }
 
       // Show animation
       setShowAnimation(true);
@@ -127,7 +108,31 @@ const Checkin = () => {
 
   return (
     <div className="relative">
-      <div className="fixed bottom-50 right-40 flex items-center gap-2 z-50">
+      <div className="fixed top-25 right-8 flex items-center gap-2 z-50">
+        {/* Added points display */}
+        <div className="flex items-center gap-2">
+          <Image
+            src="/assets/coin.gif"
+            alt="Points"
+            width={24}
+            height={24}
+            className="w-6 h-6"
+          />
+        </div>
+        
+        {/* Added check-in button */}
+        <button
+          onClick={handleCheckin}
+          disabled={hasCheckedIn}
+          className={`px-4 py-2 rounded-lg ${
+            hasCheckedIn 
+              ? 'bg-purple-100 text-purple-900 cursor-not-allowed' 
+              : 'bg-purple-700 text-white hover:bg-purple-500'
+          } font-medium transition-colors`}
+        >
+          {hasCheckedIn ? 'Checked In' : 'Check In'}
+        </button>
+
         {showAnimation && (
           <div className="absolute -bottom-16 -left-4 
                        animate-floatUp pointer-events-none
@@ -140,7 +145,7 @@ const Checkin = () => {
               className="w-8 h-8"
             />
             <span className="text-yellow-400 font-bold text-2xl">+</span>
-            <span className="text-green-400 font-bold text-2xl">1</span>
+            <span className="text-yellow-400 font-bold text-2xl">1</span>
           </div>
         )}
       </div>
