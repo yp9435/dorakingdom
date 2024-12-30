@@ -15,6 +15,8 @@ const Nav = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const router = useRouter();
+  const [time, setTime] = useState(25 * 60); // 25 minutes in seconds
+  const [isActive, setIsActive] = useState(false);
   
   const { auth } = initMyFirebase();
 
@@ -32,6 +34,33 @@ const Nav = () => {
 
     return () => unsubscribe();
   }, [auth]);
+
+  useEffect(() => {
+    let interval;
+    if (isActive && time > 0) {
+      interval = setInterval(() => {
+        setTime((prevTime) => prevTime - 1);
+      }, 1000);
+    } else if (time === 0) {
+      setIsActive(false);
+      // Optional: Play sound notification
+      new Audio('/notification.mp3').play().catch(e => console.log(e));
+    }
+    return () => clearInterval(interval);
+  }, [isActive, time]);
+
+  const startTimer = () => setIsActive(true);
+  const pauseTimer = () => setIsActive(false);
+  const resetTimer = () => {
+    setIsActive(false);
+    setTime(25 * 60);
+  };
+
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
 
   const handleLogout = async () => {
     try {
@@ -65,6 +94,22 @@ const Nav = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden sm:flex items-center gap-4">
+            <div className="flex items-center gap-2 mr-4">
+              <span className="text-white text-xl font-mono">{formatTime(time)}</span>
+              <button
+                onClick={isActive ? pauseTimer : startTimer}
+                className="px-3 py-1 bg-purple-600 hover:bg-purple-500 text-white rounded"
+              >
+                {isActive ? '⏸️' : '▶️'}
+              </button>
+              <button
+                onClick={resetTimer}
+                className="px-3 py-1 bg-purple-600 hover:bg-purple-500 text-white rounded"
+              >
+                🔄
+              </button>
+            </div>
+
             {user ? (
               <>
                 <Link 
@@ -118,6 +163,20 @@ const Nav = () => {
 
                 {toggleDropdown && (
                   <div className="absolute right-0 mt-2 w-48 bg-purple-900 rounded-md shadow-lg py-1 border border-purple-800">
+                    <div className="px-4 py-2 text-sm text-purple-300 border-b border-purple-800">
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono">{formatTime(time)}</span>
+                        <div>
+                          <button
+                            onClick={isActive ? pauseTimer : startTimer}
+                            className="mr-2"
+                          >
+                            {isActive ? '⏸️' : '▶️'}
+                          </button>
+                          <button onClick={resetTimer}>🔄</button>
+                        </div>
+                      </div>
+                    </div>
                     <Link
                       href="/profile"
                       className="block px-4 py-2 text-sm text-purple-300 hover:bg-purple-800 transition-colors"
@@ -156,3 +215,4 @@ const Nav = () => {
 };
 
 export default Nav;
+
