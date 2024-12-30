@@ -6,8 +6,8 @@ import Link from 'next/link'
 import initMyFirebase from '@/firebase/firebaseinit'
 import { onAuthStateChanged } from 'firebase/auth'
 import Mission from '@components/Mission'
-import { collection, getDocs, getDoc, doc } from 'firebase/firestore'
-import { db } from '@/firebase/firebaseinit' // make sure this is properly initialized
+import { collection, getDocs, query, where, or } from 'firebase/firestore'
+import { db } from '@/firebase/firebaseinit'
 import Checkin from '@components/Checkin'
 
 const MainHome = () => {
@@ -22,24 +22,25 @@ const MainHome = () => {
     return () => unsubscribe()
   }, [auth])
 
-  // Fetch missions from Firestore
+  // Updated fetchMissions to handle missions with and without isPrivate field
   useEffect(() => {
     const fetchMissions = async () => {
       try {
         const missionsRef = collection(db, 'missions');
         const missionSnapshot = await getDocs(missionsRef);
         
-        const missionList = missionSnapshot.docs.map((docSnap) => {
-          const missionData = docSnap.data();
-          return {
-            id: docSnap.id,
-            ...missionData,
-            // createdBy is already a map in the document, so we can use it directly
-            createdBy: missionData.createdBy || { username: 'Anonymous' }
-          };
-        });
+        const missionList = missionSnapshot.docs
+          .map((docSnap) => {
+            const missionData = docSnap.data();
+            return {
+              id: docSnap.id,
+              ...missionData,
+              createdBy: missionData.createdBy || { username: 'Anonymous' }
+            };
+          })
+          .filter(mission => mission.isPrivate !== true); // Filter out private missions
 
-        console.log("Fetched missions:", missionList); // Debug log
+        console.log("Fetched missions:", missionList);
         setMissions(missionList);
       } catch (error) {
         console.error("Error fetching missions:", error);
@@ -245,3 +246,4 @@ const MainHome = () => {
 }
 
 export default MainHome
+
