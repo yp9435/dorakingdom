@@ -14,6 +14,7 @@ function Create({ user }) {
     title: "",
     description: "",
     emoji: "",
+    isPrivate: false,
     quests: {
       Q1: { id: "q1", questName: "", completed: 0 },
       Q2: { id: "q2", questName: "", completed: 0 },
@@ -116,6 +117,7 @@ function Create({ user }) {
         title: mission.title,
         description: mission.description,
         emoji: mission.emoji || '🎯',
+        isPrivate: mission.isPrivate,
         createdBy: {
           userId: auth.currentUser.uid,
           username: auth.currentUser.displayName || 'Anonymous',
@@ -275,6 +277,35 @@ function Create({ user }) {
                        p-4 min-h-[100px] focus:outline-none focus:ring-2 focus:ring-purple-500/50
                        placeholder-purple-400/50 text-base resize-none"
             />
+            
+            <div className="mt-4">
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input 
+                  type="checkbox"
+                  checked={mission.isPrivate}
+                  onChange={(e) => setMission(prev => ({
+                    ...prev,
+                    isPrivate: e.target.checked
+                  }))}
+                  className="sr-only peer"
+                />
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 
+                  peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 rounded-full peer 
+                  dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white 
+                  after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white 
+                  after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 
+                  after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"
+                />
+                <span className="ml-3 text-sm font-medium text-purple-200">
+                  {mission.isPrivate ? '🔒 Private Mission' : '🌎 Public Mission'}
+                </span>
+              </label>
+              <p className="mt-1 text-xs text-purple-300">
+                {mission.isPrivate 
+                  ? 'Only visible on your profile' 
+                  : 'Visible to everyone'}
+              </p>
+            </div>
           </div>
 
           {/* AI Quest Generation Section - Highlighted */}
@@ -376,4 +407,5 @@ function Create({ user }) {
 }
 
 export default Create;
+  
   
