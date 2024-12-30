@@ -14,13 +14,23 @@ const MainHome = () => {
   const [user, setUser] = useState(null)
   const [missions, setMissions] = useState([])
   const { auth } = initMyFirebase()
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user)
+      setLoading(false)
     })
     return () => unsubscribe()
   }, [auth])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white">
+        Loading...
+      </div>
+    )
+  }
 
   // Updated fetchMissions to handle missions with and without isPrivate field
   useEffect(() => {
@@ -246,4 +256,3 @@ const MainHome = () => {
 }
 
 export default MainHome
-
