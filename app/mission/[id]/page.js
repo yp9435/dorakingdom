@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { db } from '../../../firebase/firebaseinit';
-import { doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, arrayUnion, arrayRemove, collection, addDoc, query, where, orderBy, getDocs, serverTimestamp } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import Popup from '@/components/Popup';
 
@@ -17,6 +17,9 @@ const MissionPage = () => {
   const [userQuests, setUserQuests] = useState({});
   const [showPopup, setShowPopup] = useState(false);
   const [completedQuest, setCompletedQuest] = useState(null);
+  const [comment, setComment] = useState('');
+  const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const params = useParams();
   const id = params.id;
   const auth = getAuth();
@@ -48,6 +51,21 @@ const MissionPage = () => {
             setUserQuests(userData.quests[missionDoc.data().title]);
           }
         }
+
+        // Fetch comments
+        const commentsRef = collection(db, 'comments');
+        const q = query(
+          commentsRef,
+          where('missionId', '==', id),
+          orderBy('createdAt', 'desc')
+        );
+        const querySnapshot = await getDocs(q);
+        const commentsData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setComments(commentsData);
+
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -146,6 +164,45 @@ const MissionPage = () => {
     }
   };
 
+  const handleCommentSubmit = async (e) => {
+    e.preventDefault();
+    if (!comment.trim() || !auth.currentUser) return;
+
+    try {
+      setIsLoading(true);
+      const commentData = {
+        missionId: id,
+        text: comment,
+        createdAt: serverTimestamp(),
+        userId: auth.currentUser.uid,
+        userName: auth.currentUser.displayName || 'Anonymous',
+        userPhoto: auth.currentUser.photoURL || null
+      };
+
+      await addDoc(collection(db, 'comments'), commentData);
+      
+      // Refresh comments
+      const commentsRef = collection(db, 'comments');
+      const q = query(
+        commentsRef,
+        where('missionId', '==', id),
+        orderBy('createdAt', 'desc')
+      );
+      const querySnapshot = await getDocs(q);
+      const commentsData = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setComments(commentsData);
+      
+      setComment('');
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen py-20 px-4 md:px-8">
       <div className="max-w-4xl mx-auto">
@@ -239,6 +296,78 @@ const MissionPage = () => {
               Mission in progress - Complete the quests above!
             </p>
           )}
+        </div>
+
+        {/* Add Comments Section */}
+        <div className="mt-12">
+          <div className="bg-purple-900/80 backdrop-blur-sm rounded-2xl p-8 
+                      border border-purple-700/50 shadow-lg">
+            <h3 className="text-2xl font-bold text-white mb-6">Mission Discussion</h3>
+
+            {/* Comment Form */}
+            <form onSubmit={handleCommentSubmit} className="mb-8">
+              <div className="flex gap-4">
+                <input
+                  type="text"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  placeholder="Share your thoughts or ask questions..."
+                  className="flex-1 bg-purple-800/30 text-white rounded-lg 
+                           border border-purple-600/30 p-4
+                           focus:outline-none focus:ring-2 focus:ring-purple-500/50
+                           placeholder-purple-400/50"
+                  disabled={isLoading}
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading || !comment.trim() || !auth.currentUser}
+                  className="bg-purple-600 hover:bg-purple-500 text-white px-6 py-2 
+                           rounded-lg transition-colors duration-200 disabled:opacity-50"
+                >
+                  Post
+                </button>
+              </div>
+              {!auth.currentUser && (
+                <p className="text-purple-300 text-sm mt-2">
+                  Please sign in to post comments
+                </p>
+              )}
+            </form>
+
+            {/* Comments List */}
+            <div className="space-y-4">
+              {comments.map((comment) => (
+                <div 
+                  key={comment.id}
+                  className="bg-purple-800/30 rounded-lg p-4 border border-purple-600/30"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    {comment.userPhoto ? (
+                      <img 
+                        src={comment.userPhoto} 
+                        alt={comment.userName}
+                        className="w-6 h-6 rounded-full"
+                      />
+                    ) : (
+                      <div className="w-6 h-6 rounded-full bg-purple-600 flex items-center justify-center">
+                        {comment.userName[0]}
+                      </div>
+                    )}
+                    <span className="text-purple-200 font-medium">{comment.userName}</span>
+                    <span className="text-purple-400 text-sm">
+                      {comment.createdAt?.toDate().toLocaleDateString() || 'Just now'}
+                    </span>
+                  </div>
+                  <p className="text-white">{comment.text}</p>
+                </div>
+              ))}
+              {comments.length === 0 && (
+                <p className="text-purple-300 text-center">
+                  No comments yet. Be the first to share your thoughts!
+                </p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
