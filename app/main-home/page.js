@@ -15,6 +15,11 @@ const MainHome = () => {
   const [missions, setMissions] = useState([])
   const { auth } = initMyFirebase()
   const [loading, setLoading] = useState(true)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -24,15 +29,6 @@ const MainHome = () => {
     return () => unsubscribe()
   }, [auth])
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-white">
-        Loading...
-      </div>
-    )
-  }
-
-  // Updated fetchMissions to handle missions with and without isPrivate field
   useEffect(() => {
     const fetchMissions = async () => {
       try {
@@ -48,7 +44,7 @@ const MainHome = () => {
               createdBy: missionData.createdBy || { username: 'Anonymous' }
             };
           })
-          .filter(mission => mission.isPrivate !== true); // Filter out private missions
+          .filter(mission => mission.isPrivate !== true);
 
         console.log("Fetched missions:", missionList);
         setMissions(missionList);
@@ -59,6 +55,14 @@ const MainHome = () => {
     
     fetchMissions();
   }, []);
+
+  if (!isClient) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white">
+        Loading...
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen px-4 py-20">
