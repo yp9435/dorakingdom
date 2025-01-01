@@ -2,7 +2,10 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export async function POST(request) {
     if (!process.env.GOOGLE_API_KEY) {
-        return Response.json({ error: 'API key not configured' }, { status: 500 });
+        return new Response(JSON.stringify({ error: 'API key not configured' }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' }
+        });
     }
 
     try {
@@ -14,11 +17,33 @@ export async function POST(request) {
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
-        const text = response.text();
+        let text = response.text();
+        
+        // Clean up the response if it contains markdown
+        if (text.includes('```')) {
+            // Extract JSON content between backticks
+            const jsonMatch = text.match(/```(?:json)?\s*(\{[\s\S]*\})\s*```/);
+            if (jsonMatch) {
+                text = jsonMatch[1];
+            }
+        }
+        
+        // Validate that the text is valid JSON
+        try {
+            JSON.parse(text); // Test if it's valid JSON
+        } catch (e) {
+            throw new Error('Invalid JSON response from AI');
+        }
 
-        return Response.json({ text });
+        return new Response(JSON.stringify({ text }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+        });
     } catch (error) {
-        console.error('Generation error:', error);
-        return Response.json({ error: 'Failed to generate content' }, { status: 500 });
+        console.error('Error:', error);
+        return new Response(JSON.stringify({ error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' }
+        });
     }
 } 
