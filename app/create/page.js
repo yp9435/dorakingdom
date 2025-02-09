@@ -21,6 +21,16 @@ function Create({ user }) {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
+  const addQuest = (quest) => {
+    setMission(prevMission => ({
+      ...prevMission,
+      quests: {
+        ...prevMission.quests,
+        [quest.id]: quest
+      }
+    }));
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (showEmojiPicker && !event.target.closest('.emoji-picker-container')) {
@@ -29,7 +39,9 @@ function Create({ user }) {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, [showEmojiPicker]);
 
   const handleChange = (e) => {
@@ -60,7 +72,7 @@ function Create({ user }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           prompt: `Based on this mission description: "${mission.description}", 
-          create a series of clear, actionable checklist items (minimum 3 steps).
+          create a series of clear, actionable checklist items (minimum 3 steps but try to accomodate as many as you deem fit).
           Break down the mission into logical, sequential steps that will help achieve the goal.
           Return ONLY a JSON object with the quest steps following this structure:
           {
@@ -419,5 +431,3 @@ function Create({ user }) {
 }
 
 export default Create;
-  
-  
