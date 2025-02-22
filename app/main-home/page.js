@@ -6,8 +6,8 @@ import Link from 'next/link'
 import initMyFirebase from '@/firebase/firebaseinit'
 import { onAuthStateChanged } from 'firebase/auth'
 import Mission from '@components/Mission'
-import { collection, getDocs, getDoc, doc } from 'firebase/firestore'
-import { db } from '@/firebase/firebaseinit' // make sure this is properly initialized
+import { collection, getDocs, query, where, or } from 'firebase/firestore'
+import { db } from '@/firebase/firebaseinit'
 import Checkin from '@components/Checkin'
 import { Sparkles, Clock, Trophy, Brain, Rocket, Star } from 'lucide-react';
 
@@ -16,32 +16,39 @@ const MainHome = () => {
   const [user, setUser] = useState(null)
   const [missions, setMissions] = useState([])
   const { auth } = initMyFirebase()
+  const [loading, setLoading] = useState(true)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user)
+      setLoading(false)
     })
     return () => unsubscribe()
   }, [auth])
 
-  // Fetch missions from Firestore
   useEffect(() => {
     const fetchMissions = async () => {
       try {
         const missionsRef = collection(db, 'missions');
         const missionSnapshot = await getDocs(missionsRef);
         
-        const missionList = missionSnapshot.docs.map((docSnap) => {
-          const missionData = docSnap.data();
-          return {
-            id: docSnap.id,
-            ...missionData,
-            // createdBy is already a map in the document, so we can use it directly
-            createdBy: missionData.createdBy || { username: 'Anonymous' }
-          };
-        });
+        const missionList = missionSnapshot.docs
+          .map((docSnap) => {
+            const missionData = docSnap.data();
+            return {
+              id: docSnap.id,
+              ...missionData,
+              createdBy: missionData.createdBy || { username: 'Anonymous' }
+            };
+          })
+          .filter(mission => mission.isPrivate !== true);
 
-        console.log("Fetched missions:", missionList); // Debug log
+        console.log("Fetched missions:", missionList);
         setMissions(missionList);
       } catch (error) {
         console.error("Error fetching missions:", error);
@@ -50,6 +57,14 @@ const MainHome = () => {
     
     fetchMissions();
   }, []);
+
+  if (!isClient) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white">
+        Loading...
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen px-4 py-20">

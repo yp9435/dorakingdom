@@ -1,15 +1,12 @@
 import React from 'react';
-import { useRouter } from 'next/navigation'; // Importing Next.js router for navigation
-
+import { useRouter } from 'next/navigation'; 
 const Mission = ({ title, description, emoji, createdBy, id }) => {
-  const router = useRouter(); // Accessing Next.js router
-  
-  // Function to handle navigation to the respective mission page
+  const router = useRouter(); 
   const handleNavigate = () => {
-    router.push(`/mission/${id}`); // Navigate to the dynamic mission page
+    router.push(`/mission/${id}`); 
   };
 
-  // Strip quotes if they exist
+
   const cleanText = (text) => {
     if (typeof text === 'string') {
       return text.replace(/['"]+/g, '');
@@ -22,7 +19,7 @@ const Mission = ({ title, description, emoji, createdBy, id }) => {
                     border border-purple-700/50 hover:border-purple-500 
                     transition-all duration-300 ease-in-out
                     hover:scale-[1.02] hover:shadow-purple-500/25 hover:shadow-xl"
-         onClick={handleNavigate} // Trigger navigation on click
+         onClick={handleNavigate} 
     >
       <div className="flex items-center gap-3 mb-4">
         <span className="text-3xl transform hover:scale-110 transition-transform duration-200">
@@ -57,3 +54,4 @@ const Mission = ({ title, description, emoji, createdBy, id }) => {
 };
 
 export default Mission;
+

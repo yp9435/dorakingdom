@@ -15,7 +15,6 @@ const Nav = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const router = useRouter();
-  
   const { auth } = initMyFirebase();
 
   useEffect(() => {
@@ -80,7 +79,7 @@ const Nav = () => {
                   <span className="mr-2">✨</span>
                   Create Mission
                 </Link>
-                
+
                 <button 
                   onClick={handleLogout}
                   className="bg-purple-800 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
@@ -156,3 +155,4 @@ const Nav = () => {
 };
 
 export default Nav;
+

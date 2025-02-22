@@ -15,6 +15,11 @@ const ProfilePage = () => {
   const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
   const { auth } = initMyFirebase();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     console.log("Auth initialized"); // Debug log
@@ -90,6 +95,14 @@ const ProfilePage = () => {
       fetchUserData();
     }
   }, [currentUser]);
+
+  if (!isClient) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-purple-900/50 to-black/50">
+        <div className="animate-pulse text-purple-200 text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   if (!currentUser) {
     return (

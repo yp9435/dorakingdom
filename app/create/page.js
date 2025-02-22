@@ -14,15 +14,22 @@ function Create({ user }) {
     title: "",
     description: "",
     emoji: "",
-    quests: {
-      Q1: { id: "q1", questName: "", completed: 0 },
-      Q2: { id: "q2", questName: "", completed: 0 },
-      Q3: { id: "q3", questName: "", completed: 0 },
-    },
+    isPrivate: false,
+    quests: {},
   });
   const [isLoading, setIsLoading] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+
+  const addQuest = (quest) => {
+    setMission(prevMission => ({
+      ...prevMission,
+      quests: {
+        ...prevMission.quests,
+        [quest.id]: quest
+      }
+    }));
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -32,7 +39,9 @@ function Create({ user }) {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, [showEmojiPicker]);
 
   const handleChange = (e) => {
@@ -63,13 +72,17 @@ function Create({ user }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           prompt: `Based on this mission description: "${mission.description}", 
-          create 3 specific, actionable quest steps.
-          Return ONLY a JSON object with exactly 3-5 quests following this structure:
+          create a series of clear, actionable checklist items (minimum 3 steps but try to accomodate as many as you deem fit).
+          Break down the mission into logical, sequential steps that will help achieve the goal.
+          Return ONLY a JSON object with the quest steps following this structure:
           {
             "Q1": {"questName": "[First step/task]"},
             "Q2": {"questName": "[Second step/task]"},
-            "Q3": {"questName": "[Third step/task]"}
-          }`
+            "Q3": {"questName": "[Third step/task]"},
+            ... (add more steps if needed for a complete breakdown)
+          }
+          Each step should be specific and checkable when completed.
+          Keep the steps concise and actionable.`
         }),
       });
 
@@ -77,13 +90,21 @@ function Create({ user }) {
       if (!response.ok) throw new Error(data.error);
 
       const questData = JSON.parse(data.text);
+      
+      // Convert the generated quests into our format
+      const formattedQuests = {};
+      Object.entries(questData).forEach(([key, value], index) => {
+        formattedQuests[key] = {
+          id: `q${index + 1}`,
+          questName: value.questName,
+          order: index,
+          completed: 0
+        };
+      });
+
       setMission(prev => ({
         ...prev,
-        quests: {
-          Q1: { ...prev.quests.Q1, questName: questData.Q1.questName },
-          Q2: { ...prev.quests.Q2, questName: questData.Q2.questName },
-          Q3: { ...prev.quests.Q3, questName: questData.Q3.questName },
-        },
+        quests: formattedQuests
       }));
     } catch (error) {
       console.error('Error:', error);
@@ -105,30 +126,28 @@ function Create({ user }) {
 
     try {
       setIsLoading(true);
-      console.log("Starting mission creation...");
+      console.log("Mission data being saved:", mission);
+      console.log("Quests being saved:", mission.quests);
 
       // Generate a new mission ID
       const missionId = crypto.randomUUID();
-      console.log("Generated missionId:", missionId);
 
-      // 1. Add to missions collection (public missions database)
+      // 1. Add to missions collection
       const missionData = {
         title: mission.title,
         description: mission.description,
         emoji: mission.emoji || '🎯',
+        isPrivate: mission.isPrivate,
         createdBy: {
           userId: auth.currentUser.uid,
           username: auth.currentUser.displayName || 'Anonymous',
           email: auth.currentUser.email
         },
-        quests: {
-          Q1: { ...mission.quests.Q1, completed: 0 },
-          Q2: { ...mission.quests.Q2, completed: 0 },
-          Q3: { ...mission.quests.Q3, completed: 0 }
-        },
+        quests: mission.quests,
         createdAt: serverTimestamp()
       };
-      console.log("Mission data:", missionData);
+
+      console.log("Final mission data being saved:", missionData);
 
       // Add to missions collection
       console.log("Adding to missions collection...");
@@ -158,11 +177,13 @@ function Create({ user }) {
           title: mission.title,
           emoji: mission.emoji || '🎯',
           startedAt: serverTimestamp(),
-          quests: {
-            Q1: { questName: mission.quests.Q1.questName, completed: 0 },
-            Q2: { questName: mission.quests.Q2.questName, completed: 0 },
-            Q3: { questName: mission.quests.Q3.questName, completed: 0 }
-          }
+          quests: Object.entries(mission.quests).reduce((acc, [key, quest]) => {
+            acc[key] = {
+              questName: quest.questName,
+              completed: 0
+            };
+            return acc;
+          }, {})
         }
       });
       console.log("Updated user mission progress");
@@ -275,6 +296,35 @@ function Create({ user }) {
                        p-4 min-h-[100px] focus:outline-none focus:ring-2 focus:ring-purple-500/50
                        placeholder-purple-400/50 text-base resize-none"
             />
+            
+            <div className="mt-4">
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input 
+                  type="checkbox"
+                  checked={mission.isPrivate}
+                  onChange={(e) => setMission(prev => ({
+                    ...prev,
+                    isPrivate: e.target.checked
+                  }))}
+                  className="sr-only peer"
+                />
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 
+                  peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 rounded-full peer 
+                  dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white 
+                  after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white 
+                  after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 
+                  after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"
+                />
+                <span className="ml-3 text-sm font-medium text-purple-200">
+                  {mission.isPrivate ? '🔒 Private Mission' : '🌎 Public Mission'}
+                </span>
+              </label>
+              <p className="mt-1 text-xs text-purple-300">
+                {mission.isPrivate 
+                  ? 'Only visible on your profile' 
+                  : 'Visible to everyone'}
+              </p>
+            </div>
           </div>
 
           {/* AI Quest Generation Section - Highlighted */}
@@ -323,12 +373,12 @@ function Create({ user }) {
             </button>
 
             <div className="mt-6 space-y-3">
-              {Object.keys(mission.quests).map((key) => (
+              {Object.entries(mission.quests).map(([key, quest]) => (
                 <div key={key} className="group relative">
                   <input
                     type="text"
                     placeholder="Add a specific, actionable step"
-                    value={mission.quests[key].questName}
+                    value={quest.questName}
                     onChange={(e) => handleQuestChange(key, e.target.value)}
                     className="w-full bg-purple-800/30 text-white rounded-lg
                              border border-purple-600/30 p-4 pl-12
@@ -342,6 +392,11 @@ function Create({ user }) {
                   </div>
                 </div>
               ))}
+              {Object.keys(mission.quests).length === 0 && (
+                <div className="text-center text-purple-300 py-4">
+                  Click "Generate with AI" to create quest steps based on your mission description
+                </div>
+              )}
             </div>
           </div>
 
@@ -376,4 +431,3 @@ function Create({ user }) {
 }
 
 export default Create;
-  
