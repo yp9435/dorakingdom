@@ -87,3 +87,14 @@ body {
 .animate-slideUp {
   animation: slideUp 1s ease-out 0.5s both;
 }
+
+@keyframes shootingStar {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50px, 50px) scale(0.8);
+    opacity: 0;
+  }
+}

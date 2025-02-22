@@ -9,6 +9,8 @@ import Mission from '@components/Mission'
 import { collection, getDocs, getDoc, doc } from 'firebase/firestore'
 import { db } from '@/firebase/firebaseinit' // make sure this is properly initialized
 import Checkin from '@components/Checkin'
+import { Sparkles, Clock, Trophy, Brain, Rocket, Star } from 'lucide-react';
+
 
 const MainHome = () => {
   const [user, setUser] = useState(null)
@@ -106,113 +108,146 @@ const MainHome = () => {
           </Link>
         </div>
         
-        {/* Weekly Challenge Section */}
-        <div className="mb-16">
-          <Link href="/weekly" className="block">
-            <div className="relative rounded-2xl overflow-hidden
-                          border-2 border-purple-500/50
-                          shadow-[0_0_25px_rgba(168,85,247,0.2)]
-                          hover:shadow-[0_0_35px_rgba(168,85,247,0.4)]
-                          hover:border-purple-400
-                          transition-all duration-300
-                          bg-gradient-to-br from-purple-900/20 to-purple-800/20
-                          group transform hover:scale-[1.01]">
-              {/* Background Image*/}
-              <div className="absolute inset-0">
-                <div className="relative w-full h-full overflow-hidden">
-                  <div 
-                    className="absolute inset-0 opacity-75"
-                    style={{
-                      backgroundImage: `url('/assets/weekly.jpg')`,
-                      backgroundSize: '200px 200px',
-                      backgroundRepeat: 'repeat',
-                      transform: 'scale(1.1)',
-                    }}
-                  />
-                </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+  {/* Weekly Challenge - Takes up 1/3 width */}
+  <div className="lg:col-span-1">
+    <Link href="/weekly" className="block h-full">
+      <div
+        className="relative h-full rounded-2xl overflow-hidden
+                   border-2 border-purple-500/50 
+                   shadow-[0_0_25px_rgba(168,85,247,0.2)]
+                   hover:shadow-[0_0_35px_rgba(168,85,247,0.4)]
+                   hover:border-purple-400
+                   transition-all duration-300
+                   bg-gradient-to-br from-purple-900/20 to-purple-800/20
+                   group transform hover:scale-[1.01]"
+                   style={{
+                    backgroundImage: `url('/assets/weekly.jpg')`,
+                    backgroundSize: '200px 200px',
+                    backgroundRepeat: 'repeat',}}
+      >
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black opacity-50" />
+        <div className="relative p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <Trophy className="w-6 h-6 text-purple-400" />
+            <h2 className="text-2xl font-bold text-white">Weekly Challenge</h2>
+          </div>
+
+          <div className="flex items-center gap-2 mb-6 bg-purple-900/60 p-3 rounded-lg backdrop-blur-sm">
+            <Clock className="w-5 h-5 text-purple-400" />
+            <span className="text-purple-200">5d 12h remaining</span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-purple-800/50 p-3 rounded-lg backdrop-blur-sm border border-purple-500/30">
+              <div className="flex items-center gap-2">
+                <Star className="w-5 h-5 text-yellow-400" />
+                <span className="text-purple-200">50 Points</span>
               </div>
-              
-              {/* Content Container */}
-              <div className="relative p-8">
-                
-                
-                {/* Header Section */}
-                <div className="flex items-center justify-between mb-8">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-3">
-                      <h2 className="text-2xl md:text-6xl text-white heading 
-                                   bg-clip-text text-transparent drop-shadow-lg">
-                        Weekly Challenge
-                      </h2>
-                      <span className="text-2xl animate-bounce filter drop-shadow-lg">🎯</span>
-                    </div>
-                    <p className="text-purple-100 text-sm md:text-base drop-shadow">
-                      Complete these tasks to earn special rewards!
+            </div>
+            <div className="bg-purple-800/50 p-3 rounded-lg backdrop-blur-sm border border-purple-500/30">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-yellow-400" />
+                <span className="text-purple-200">Gold Badge</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Updated Description */}
+          <p className="text-white text-lg mt-4 text-shadow">
+            Complete these tasks to earn special rewards! Don't miss out on the opportunity to gain points and badges that reflect your achievements!
+          </p>
+        </div>
+      </div>
+    </Link>
+  </div>
+
+  {/* DoraAI - Takes up 2/3 width */}
+  <div className="lg:col-span-2 relative">
+    <Link href="/doraai" className="block h-full">
+      <div className="relative h-full rounded-2xl overflow-hidden
+                      border-2 border-purple-500/50
+                      shadow-[0_0_30px_rgba(168,85,247,0.3)]
+                      hover:shadow-[0_0_40px_rgba(168,85,247,0.5)]
+                      hover:border-purple-400
+                      transition-all duration-300
+                      group transform hover:scale-[1.02]"
+                      style={{
+                        backgroundImage: `url('/assets/doraaibg1.gif')`,
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                      }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-500/50 to-transparent" />
+        <div className="relative p-8">
+          <div className="absolute top-4 right-4">
+            <div className="bg-purple-700/70 px-3 py-1 rounded-full backdrop-blur-sm
+                        border border-purple-600/30 animate-pulse">
+              <span className="text-purple-100 text-sm font-semibold">New Feature</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-6">
+            <div className="space-y-2">
+              <div className="flex items-center gap-3">
+                <Brain className="w-8 h-8 text-purple-800" />
+                <h2 className="text-4xl font-bold text-purple-950">Meet DoraAI</h2>
+              </div>
+              <p className="text-purple-950 text-lg font-medium">
+                Your intelligent learning companion that adapts to your journey
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-purple-900 p-4 rounded-xl backdrop-blur-sm
+                          border border-purple-600 group-hover:border-purple-500
+                          transition-all duration-300">
+                <div className="flex items-start gap-3">
+                  <Rocket className="w-6 h-6 text-purple-300" />
+                  <div>
+                    <h3 className="text-purple-100 font-semibold mb-1">Personalized Learning</h3>
+                    <p className="text-purple-200 text-sm">
+                      AI-driven path that evolves with your progress
                     </p>
                   </div>
-                  
-                  {/* Timer Section */}
-                  <div className="text-right bg-purple-900/60 px-4 py-2 rounded-xl 
-                                border border-purple-500/30 backdrop-blur-sm
-                                shadow-lg">
-                    <div className="text-purple-200 text-xs uppercase tracking-wider font-medium mb-1">
-                      Time Remaining
-                    </div>
-                    <div className="text-white font-bold flex items-center gap-2">
-                      <span className="text-purple-400">⏳</span>
-                      <span>5d 12h</span>
-                    </div>
-                  </div>
                 </div>
-                
-                {/* Rewards Section */}
-                <div className="relative">
-                  <div className="bg-purple-900/60 rounded-xl p-6 
-                                border border-purple-600/20 backdrop-blur-md
-                                transform hover:scale-[1.01] transition-all duration-300
-                                hover:border-purple-500/40 hover:shadow-xl
-                                shadow-lg">
-                    <h4 className="text-white font-semibold mb-4 flex items-center gap-2">
-                      <span className="text-xl filter drop-shadow-lg">🏆</span>
-                      <span className="bg-gradient-to-r from-yellow-200 to-yellow-500 
-                                     bg-clip-text text-transparent">
-                        Rewards
-                      </span>
-                    </h4>
-                    
-                    <div className="flex flex-wrap items-center gap-6">
-                      {/* Gold Badge Reward */}
-                      <div className="flex items-center gap-3 bg-purple-800/50 px-4 py-2 
-                                    rounded-lg border border-purple-500/20
-                                    hover:border-purple-400/40 transition-colors duration-300
-                                    shadow-lg backdrop-blur-sm">
-                        <div className="relative">
-                          <span className="text-2xl transform hover:scale-110 transition-transform duration-300
-                                         inline-block drop-shadow-lg">🥇</span>
-                          <div className="absolute -inset-1 bg-yellow-500/20 rounded-full blur-sm"></div>
-                        </div>
-                        <div className="text-purple-100">
-                          <span className="font-bold text-yellow-400">1×</span> Gold Badge
-                        </div>
-                      </div>
-                      
-                      {/* Bonus Points Reward */}
-                      <div className="flex items-center gap-3 bg-purple-800/50 px-4 py-2 
-                                    rounded-lg border border-purple-500/20
-                                    hover:border-purple-400/40 transition-colors duration-300
-                                    shadow-lg backdrop-blur-sm">
-                        <span className="text-2xl animate-pulse drop-shadow-lg">🌟</span>
-                        <div className="text-purple-100">
-                          <span className="font-bold text-yellow-400">50</span> Bonus Points
-                        </div>
-                      </div>
-                    </div>
+              </div>
+
+              <div className="bg-purple-900 p-4 rounded-xl backdrop-blur-sm
+                          border border-purple-600 group-hover:border-purple-500
+                          transition-all duration-300">
+                <div className="flex items-start gap-3">
+                  <Sparkles className="w-6 h-6 text-purple-300" />
+                  <div>
+                    <h3 className="text-purple-100 font-semibold mb-1">Smart Recommendations</h3>
+                    <p className="text-purple-200 text-sm">
+                      Get tailored missions and challenges
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-          </Link>
+
+            <div className="mt-4">
+              <div className="inline-flex items-center gap-2 
+                           bg-purple-800/50 hover:bg-purple-600/70
+                           px-6 py-3 rounded-xl
+                           border border-purple-400/50
+                           transition-all duration-300
+                           group-hover:shadow-[0_0_25px_rgba(168,85,247,0.4)]">
+                <span className="text-purple-100 font-semibold">Try DoraAI Now</span>
+                <span className="text-xl">→</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </Link>
+  </div>
+</div>
+
+
+
 
 
         {/* Explore Section */}

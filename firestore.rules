@@ -1,0 +1,50 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Rules for missions collection
+    match /missions/{missionId} {
+      // Allow everyone to read missions
+      allow read: if true;
+      
+      // Allow only authenticated users to create missions
+      allow create: if request.auth != null;
+      
+      // Allow users to edit or delete their own missions
+      allow update, delete: if request.auth != null && request.auth.uid == resource.data.creatorId;
+    }
+    
+    // Rules for comments collection
+    match /comments/{commentId} {
+      // Allow everyone to read comments
+      allow read: if true;
+
+      // Allow only authenticated users to create comments
+      allow create: if request.auth != null;
+
+      // Allow users to edit or delete their own comments
+      allow update, delete: if request.auth != null && request.auth.uid == resource.data.creatorId;
+    }
+
+    // Rules for user profiles
+    match /users/{userId} {
+      // Allow everyone to read profiles
+      allow read: if true;
+
+      // Allow only the user to modify their own profile
+      allow update: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Rules for points and badges
+    match /users/{userId}/points/{pointDocId} {
+      // Allow only the user to modify their points
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Generic fallback rule (deny everything else)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

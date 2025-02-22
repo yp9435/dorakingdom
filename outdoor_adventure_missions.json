@@ -1,0 +1,420 @@
+{
+    "missions": [
+        {
+            "createdAt": "February 09, 2025 at 10:01:02 AM UTC+5:30",
+            "createdBy": {
+                "email": "yeshigayu@gmail.com",
+                "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+                "username": "DoraKingdom"
+            },
+            "description": "Master the art of stargazing! Learn how to identify constellations, track planets, and use telescopes to uncover the mysteries of the night sky.",
+            "emoji": "\ud83c\udf0c",
+            "isPrivate": false,
+            "quests": [
+                {
+                    "completed": 0,
+                    "id": "q1",
+                    "order": 0,
+                    "questName": "Understanding the Night Sky \u2013 Basic Astronomy"
+                },
+                {
+                    "completed": 0,
+                    "id": "q2",
+                    "order": 1,
+                    "questName": "Finding the North Star \u2013 Navigating Using the Stars"
+                },
+                {
+                    "completed": 0,
+                    "id": "q3",
+                    "order": 2,
+                    "questName": "Identifying Constellations \u2013 The Stories in the Sky"
+                },
+                {
+                    "completed": 0,
+                    "id": "q4",
+                    "order": 3,
+                    "questName": "Using a Telescope \u2013 A Beginner\u2019s Guide"
+                },
+                {
+                    "completed": 0,
+                    "id": "q5",
+                    "order": 4,
+                    "questName": "Tracking the Planets \u2013 When and Where to Look"
+                },
+                {
+                    "completed": 0,
+                    "id": "q6",
+                    "order": 5,
+                    "questName": "Meteor Showers \u2013 How to Catch a Shooting Star"
+                },
+                {
+                    "completed": 0,
+                    "id": "q7",
+                    "order": 6,
+                    "questName": "Astrophotography \u2013 Capturing the Beauty of Space"
+                }
+            ],
+            "title": "The Stargazer\u2019s Journey: Exploring the Cosmos"
+        },
+        {
+            "createdAt": "February 09, 2025 at 10:01:02 AM UTC+5:30",
+            "createdBy": {
+                "email": "yeshigayu@gmail.com",
+                "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+                "username": "DoraKingdom"
+            },
+            "description": "Transform into a hiking expert! Plan the perfect hike, learn trail safety, and conquer new terrains with confidence.",
+            "emoji": "\ud83e\udd7e",
+            "isPrivate": false,
+            "quests": [
+                {
+                    "completed": 0,
+                    "id": "q1",
+                    "order": 0,
+                    "questName": "Choosing the Right Trail \u2013 Finding Your Ideal Hike"
+                },
+                {
+                    "completed": 0,
+                    "id": "q2",
+                    "order": 1,
+                    "questName": "Packing Essentials \u2013 What You Need for Every Hike"
+                },
+                {
+                    "completed": 0,
+                    "id": "q3",
+                    "order": 2,
+                    "questName": "Reading Trail Maps \u2013 Navigating Like a Pro"
+                },
+                {
+                    "completed": 0,
+                    "id": "q4",
+                    "order": 3,
+                    "questName": "Trail Safety \u2013 Avoiding Hazards in the Wild"
+                },
+                {
+                    "completed": 0,
+                    "id": "q5",
+                    "order": 4,
+                    "questName": "Pacing and Endurance \u2013 How to Hike for Longer"
+                },
+                {
+                    "completed": 0,
+                    "id": "q6",
+                    "order": 5,
+                    "questName": "Leave No Trace \u2013 Eco-Friendly Hiking Practices"
+                },
+                {
+                    "completed": 0,
+                    "id": "q7",
+                    "order": 6,
+                    "questName": "Summit Success \u2013 Reaching the Peak Safely"
+                }
+            ],
+            "title": "The Ultimate Hiking Guide: From Trailhead to Summit"
+        },
+        {
+            "createdAt": "February 09, 2025 at 10:01:02 AM UTC+5:30",
+            "createdBy": {
+                "email": "yeshigayu@gmail.com",
+                "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+                "username": "DoraKingdom"
+            },
+            "description": "Become a survival expert! Learn essential skills to thrive in the wilderness, from fire-starting to shelter-building.",
+            "emoji": "\ud83d\udd25",
+            "isPrivate": false,
+            "quests": [
+                {
+                    "completed": 0,
+                    "id": "q1",
+                    "order": 0,
+                    "questName": "Basic Survival Mindset \u2013 Staying Calm Under Pressure"
+                },
+                {
+                    "completed": 0,
+                    "id": "q2",
+                    "order": 1,
+                    "questName": "Fire-Making Techniques \u2013 Creating Heat Without Matches"
+                },
+                {
+                    "completed": 0,
+                    "id": "q3",
+                    "order": 2,
+                    "questName": "Building a Shelter \u2013 Protection Against the Elements"
+                },
+                {
+                    "completed": 0,
+                    "id": "q4",
+                    "order": 3,
+                    "questName": "Finding Clean Water \u2013 Purification Methods"
+                },
+                {
+                    "completed": 0,
+                    "id": "q5",
+                    "order": 4,
+                    "questName": "Foraging for Food \u2013 Safe Plants and Edible Insects"
+                },
+                {
+                    "completed": 0,
+                    "id": "q6",
+                    "order": 5,
+                    "questName": "Basic First Aid \u2013 Treating Common Outdoor Injuries"
+                },
+                {
+                    "completed": 0,
+                    "id": "q7",
+                    "order": 6,
+                    "questName": "Navigating Without a Compass \u2013 Using Nature\u2019s Clues"
+                }
+            ],
+            "title": "Wilderness Survival Mastery: Thriving in the Wild"
+        },
+        {
+            "createdAt": "February 09, 2025 at 10:01:02 AM UTC+5:30",
+            "createdBy": {
+                "email": "yeshigayu@gmail.com",
+                "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+                "username": "DoraKingdom"
+            },
+            "description": "Master the thrill of mountain biking! Learn essential techniques, safety tips, and advanced skills to tackle any trail.",
+            "emoji": "\ud83d\udeb5",
+            "isPrivate": false,
+            "quests": [
+                {
+                    "completed": 0,
+                    "id": "q1",
+                    "order": 0,
+                    "questName": "Choosing the Right Bike \u2013 Understanding Different Types"
+                },
+                {
+                    "completed": 0,
+                    "id": "q2",
+                    "order": 1,
+                    "questName": "Basic Riding Techniques \u2013 Gaining Confidence on the Trail"
+                },
+                {
+                    "completed": 0,
+                    "id": "q3",
+                    "order": 2,
+                    "questName": "Cornering Like a Pro \u2013 How to Handle Sharp Turns"
+                },
+                {
+                    "completed": 0,
+                    "id": "q4",
+                    "order": 3,
+                    "questName": "Braking and Control \u2013 Staying Safe at High Speeds"
+                },
+                {
+                    "completed": 0,
+                    "id": "q5",
+                    "order": 4,
+                    "questName": "Climbing and Descending \u2013 Mastering Uphill and Downhill Rides"
+                },
+                {
+                    "completed": 0,
+                    "id": "q6",
+                    "order": 5,
+                    "questName": "Fixing a Flat \u2013 Essential Bike Repair Skills"
+                },
+                {
+                    "completed": 0,
+                    "id": "q7",
+                    "order": 6,
+                    "questName": "Pushing Your Limits \u2013 Joining a Mountain Biking Race"
+                }
+            ],
+            "title": "The Mountain Biker\u2019s Journey: Conquer Every Trail"
+        },
+
+        {
+            "createdAt": "February 09, 2025 at 10:01:02 AM UTC+5:30",
+            "createdBy": {
+                "email": "yeshigayu@gmail.com",
+                "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+                "username": "DoraKingdom"
+            },
+            "description": "Become the ultimate party host! Plan aesthetic gatherings, master the art of hosting, and create picture-perfect moments.",
+            "emoji": "\ud83c\udf80",
+            "isPrivate": false,
+            "quests": [
+                {
+                    "completed": 0,
+                    "id": "q1",
+                    "order": 0,
+                    "questName": "Party Theme Ideas \u2013 Picking the Perfect Vibe"
+                },
+                {
+                    "completed": 0,
+                    "id": "q2",
+                    "order": 1,
+                    "questName": "Aesthetic Decorations \u2013 DIY & Budget-Friendly Hacks"
+                },
+                {
+                    "completed": 0,
+                    "id": "q3",
+                    "order": 2,
+                    "questName": "Curating the Playlist \u2013 Setting the Mood with Music"
+                },
+                {
+                    "completed": 0,
+                    "id": "q4",
+                    "order": 3,
+                    "questName": "The Snack Table \u2013 Insta-Worthy Food & Drinks"
+                },
+                {
+                    "completed": 0,
+                    "id": "q5",
+                    "order": 4,
+                    "questName": "Hosting Like a Pro \u2013 Making Guests Feel Special"
+                },
+                {
+                    "completed": 0,
+                    "id": "q6",
+                    "order": 5,
+                    "questName": "Photo-Worthy Moments \u2013 Creating the Perfect Backdrop"
+                },
+                {
+                    "completed": 0,
+                    "id": "q7",
+                    "order": 6,
+                    "questName": "After-Party Glow \u2013 Wrapping Up with Style"
+                }
+            ],
+            "title": "The Ultimate Party Planner: Host Like a Pro"
+        },
+        {
+            "createdAt": "February 09, 2025 at 10:01:02 AM UTC+5:30",
+            "createdBy": {
+                "username": "DoraKingdom"
+            },
+            "description": "Stay ahead of the trends for Summer 2025! Explore the latest styles, colors, and statement pieces to curate a fashionable and trendy wardrobe.",
+            "emoji": "☀️",
+            "isPrivate": false,
+            "quests": [
+                {
+                    "completed": 0,
+                    "id": "q1",
+                    "order": 0,
+                    "questName": "Soft Ballet Pink – Embrace Feminine Elegance"
+                },
+                {
+                    "completed": 0,
+                    "id": "q2",
+                    "order": 1,
+                    "questName": "Mix-and-Match Athleisure – Sporty Yet Chic"
+                },
+                {
+                    "completed": 0,
+                    "id": "q3",
+                    "order": 2,
+                    "questName": "3D Florals and Bright Greens – Bring Nature to Life"
+                },
+                {
+                    "completed": 0,
+                    "id": "q4",
+                    "order": 3,
+                    "questName": "Statement Blazers & Skirt Suits – Power Dressing for Summer"
+                },
+                {
+                    "completed": 0,
+                    "id": "q5",
+                    "order": 4,
+                    "questName": "Indie Sleaze Revival – Edgy and Carefree Vibes"
+                },
+                {
+                    "completed": 0,
+                    "id": "q6",
+                    "order": 5,
+                    "questName": "Athlingerie – The Fusion of Comfort & Sensuality"
+                }
+            ],
+            "title": "The Summer 2025 Fashion Guide: Stay Stylish & Trendy"
+        },
+        {
+            "createdAt": "February 09, 2025 at 10:01:02 AM UTC+5:30",
+            "createdBy": {
+                "username": "DoraKingdom"
+            },
+            "description": "Master the art of whistling! Whether you're trying to whistle for the first time or aiming to perfect advanced techniques, this guide will help you achieve your goal.",
+            "emoji": "🎶",
+            "isPrivate": false,
+            "quests": [
+                {
+                    "completed": 0,
+                    "id": "q1",
+                    "order": 0,
+                    "questName": "Basic Pucker Whistle – The Classic Method"
+                },
+                {
+                    "completed": 0,
+                    "id": "q2",
+                    "order": 1,
+                    "questName": "Finger Whistling – The Loud Attention-Grabber"
+                },
+                {
+                    "completed": 0,
+                    "id": "q3",
+                    "order": 2,
+                    "questName": "Hands-Free Whistle – Using Just Your Lips"
+                },
+                {
+                    "completed": 0,
+                    "id": "q4",
+                    "order": 3,
+                    "questName": "Whistling Inwards – The Beginner-Friendly Trick"
+                },
+                {
+                    "completed": 0,
+                    "id": "q5",
+                    "order": 4,
+                    "questName": "The Two-Finger Whistle – Loud and Sharp"
+                },
+                {
+                    "completed": 0,
+                    "id": "q6",
+                    "order": 5,
+                    "questName": "The Four-Finger Whistle – Maximum Volume!"
+                },
+                {
+                    "completed": 0,
+                    "id": "q7",
+                    "order": 6,
+                    "questName": "Whistling a Melody – Controlling Pitch and Tone"
+                },
+                {
+                    "completed": 0,
+                    "id": "q8",
+                    "order": 7,
+                    "questName": "Bird Call Whistle – Mimicking Nature"
+                },
+                {
+                    "completed": 0,
+                    "id": "q9",
+                    "order": 8,
+                    "questName": "The Vibrato Whistle – Adding a Tremolo Effect"
+                },
+                {
+                    "completed": 0,
+                    "id": "q10",
+                    "order": 9,
+                    "questName": "Whistling While Speaking – A Fun Party Trick"
+                },
+                {
+                    "completed": 0,
+                    "id": "q11",
+                    "order": 10,
+                    "questName": "Advanced Techniques – Whistling With Your Tongue"
+                },
+                {
+                    "completed": 0,
+                    "id": "q12",
+                    "order": 11,
+                    "questName": "Practicing Breath Control – The Key to Consistency"
+                }
+            ],
+            "title": "The Whistling Mastery Guide: From Basics to Pro"
+        }
+        
+        
+    
+    ]
+}

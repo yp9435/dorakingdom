@@ -1,0 +1,730 @@
+{
+    "missions": [
+        {
+            "createdAt": "February 09, 2025 at 10:01:02 AM UTC+5:30",
+            "createdBy": {
+                "email": "yeshigayu@gmail.com",
+                "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+                "username": "DoraKingdom"
+            },
+            "description": "Embark on an epic quest to conquer the Stock Market! Learn how to invest wisely in stocks, ETFs, and mutual funds, all while avoiding the temptation to check the market every hour. Become a Passive Investing Master!",
+            "emoji": "📈",
+            "isPrivate": false,
+            "quests": [
+                {
+                    "completed": 0,
+                    "id": "q1",
+                    "order": 0,
+                    "questName": "The Stock Market Arena – Learn the Basics"
+                },
+                {
+                    "completed": 0,
+                    "id": "q2",
+                    "order": 1,
+                    "questName": "Mastering the Risk Map – Understanding Market Volatility"
+                },
+                {
+                    "completed": 0,
+                    "id": "q3",
+                    "order": 2,
+                    "questName": "Unlocking the Power of ETFs and Mutual Funds"
+                },
+                {
+                    "completed": 0,
+                    "id": "q4",
+                    "order": 3,
+                    "questName": "The Golden Balance – Asset Allocation and Portfolio Management"
+                },
+                {
+                    "completed": 0,
+                    "id": "q5",
+                    "order": 4,
+                    "questName": "Dividend Treasure – Discover How Dividends Work"
+                },
+                {
+                    "completed": 0,
+                    "id": "q6",
+                    "order": 5,
+                    "questName": "The Magic of Dollar-Cost Averaging"
+                },
+                {
+                    "completed": 0,
+                    "id": "q7",
+                    "order": 6,
+                    "questName": "The Legendary Index Funds – A Path to Long-Term Growth"
+                },
+                {
+                    "completed": 0,
+                    "id": "q8",
+                    "order": 7,
+                    "questName": "Passive Income Mastery – Create Your Strategy"
+                },
+                {
+                    "completed": 0,
+                    "id": "q9",
+                    "order": 8,
+                    "questName": "The Rebalance Ritual – Adjusting Your Portfolio for Success"
+                },
+                {
+                    "completed": 0,
+                    "id": "q10",
+                    "order": 9,
+                    "questName": "Patience of a Sage – Staying Committed to Your Long-Term Goals"
+                }
+            ],
+            "title": "The Stock Market Adventure: Passive Investing for Legends"
+        },
+        {
+            "createdAt": "January 1, 2025 at 3:47:10 PM UTC+5:30",
+            "createdBy": {
+              "email": "yeshigayu@gmail.com",
+              "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+              "username": "DoraKingdom"
+            },
+            "description": "Embark on a journey to become a true Product Hero! Learn not just how to design stunning UIs but how to think like a product manager. Solve real user pain points, create experiences that wow, and shape the future of products.",
+            "emoji": "🎨",
+            "isPrivate": false,
+            "quests": [
+              {
+                "completed": 0,
+                "id": "q1",
+                "order": 0,
+                "questName": "Quest 1: The Power of Product Thinking – Start with Why"
+              },
+              {
+                "completed": 0,
+                "id": "q2",
+                "order": 1,
+                "questName": "Quest 2: User Research: The Heart of Product Design"
+              },
+              {
+                "completed": 0,
+                "id": "q3",
+                "order": 2,
+                "questName": "Quest 3: Wireframes: The Blueprint of Great UI"
+              },
+              {
+                "completed": 0,
+                "id": "q4",
+                "order": 3,
+                "questName": "Quest 4: Prototyping: Bring Ideas to Life"
+              },
+              {
+                "completed": 0,
+                "id": "q5",
+                "order": 4,
+                "questName": "Quest 5: Usability Testing: Testing the Waters"
+              },
+              {
+                "completed": 0,
+                "id": "q6",
+                "order": 5,
+                "questName": "Quest 6: Information Architecture: Organize for Success"
+              },
+              {
+                "completed": 0,
+                "id": "q7",
+                "order": 6,
+                "questName": "Quest 7: Interaction Design: Where Action Meets Reaction"
+              },
+              {
+                "completed": 0,
+                "id": "q8",
+                "order": 7,
+                "questName": "Quest 8: Visual Design: Crafting the Perfect Look"
+              },
+              {
+                "completed": 0,
+                "id": "q9",
+                "order": 8,
+                "questName": "Quest 9: Design Systems: The Ultimate Guide to Consistency"
+              },
+              {
+                "completed": 0,
+                "id": "q10",
+                "order": 9,
+                "questName": "Quest 10: Product Strategy: Designing for Business Goals"
+              },
+              {
+                "completed": 0,
+                "id": "q11",
+                "order": 10,
+                "questName": "Quest 11: Collaborating with Developers: Making Ideas a Reality"
+              },
+              {
+                "completed": 0,
+                "id": "q12",
+                "order": 11,
+                "questName": "Quest 12: Creating Seamless User Journeys: From Problem to Solution"
+              }
+            ],
+            "title": "The UX/UI Hero’s Journey: Master the Art of Product Thinking"
+          },
+          {
+            "createdAt": "January 1, 2025 at 3:47:10 PM UTC+5:30",
+            "createdBy": {
+              "email": "yeshigayu@gmail.com",
+              "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+              "username": "DoraKingdom"
+            },
+            "description": "Become a PKM Master! Build your second brain using tools like Notion, Obsidian, and Roam Research. Learn how to capture, organize, and retrieve knowledge quickly and effectively to boost creativity, speed up writing, and enhance your learning ability.",
+            "emoji": "🧠",
+            "isPrivate": false,
+            "quests": [
+              {
+                "completed": 0,
+                "id": "q1",
+                "order": 0,
+                "questName": "Quest 1: Introduction to PKM: Building Your Second Brain"
+              },
+              {
+                "completed": 0,
+                "id": "q2",
+                "order": 1,
+                "questName": "Quest 2: Setting Up Your First Knowledge Vault – Notion or Obsidian?"
+              },
+              {
+                "completed": 0,
+                "id": "q3",
+                "order": 2,
+                "questName": "Quest 3: The Zettelkasten Method – Connecting Ideas Like a Pro"
+              },
+              {
+                "completed": 0,
+                "id": "q4",
+                "order": 3,
+                "questName": "Quest 4: The Art of Taking Smart Notes – Capture Ideas for Future Creation"
+              },
+              {
+                "completed": 0,
+                "id": "q5",
+                "order": 4,
+                "questName": "Quest 5: Mastering Tags & Links – Organizing Your Knowledge Like a Genius"
+              },
+              {
+                "completed": 0,
+                "id": "q6",
+                "order": 5,
+                "questName": "Quest 6: Building the Perfect Workflow – Capture, Process, Retrieve"
+              },
+              {
+                "completed": 0,
+                "id": "q7",
+                "order": 6,
+                "questName": "Quest 7: Visualizing Knowledge – Creating a Map of Your Mind"
+              },
+              {
+                "completed": 0,
+                "id": "q8",
+                "order": 7,
+                "questName": "Quest 8: Knowledge Sprints – How to Use PKM for Fast Writing & Content Creation"
+              },
+              {
+                "completed": 0,
+                "id": "q9",
+                "order": 8,
+                "questName": "Quest 9: Using PKM for Lifelong Learning – Creating a System That Evolves"
+              },
+              {
+                "completed": 0,
+                "id": "q10",
+                "order": 9,
+                "questName": "Quest 10: Optimizing Your Second Brain – Maintaining & Updating Your Knowledge Base"
+              },
+              {
+                "completed": 0,
+                "id": "q11",
+                "order": 10,
+                "questName": "Quest 11: Creating Your Knowledge Dashboard – Where Everything Comes Together"
+              },
+              {
+                "completed": 0,
+                "id": "q12",
+                "order": 11,
+                "questName": "Quest 12: PKM for Creativity – Using Your Second Brain to Fuel Innovation"
+              }
+            ],
+            "title": "The PKM Master’s Journey: Build Your Second Brain"
+          },
+          {
+            "createdAt": "January 1, 2025 at 3:47:10 PM UTC+5:30",
+            "createdBy": {
+              "email": "yeshigayu@gmail.com",
+              "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+              "username": "DoraKingdom"
+            },
+            "description": "Unlock your potential and build a personal brand that resonates. Learn how to create compelling content, grow your online presence, and monetize your skills on platforms like TikTok, YouTube, and LinkedIn. Become a content creator that not only creates but thrives!",
+            "emoji": "📸",
+            "isPrivate": false,
+            "quests": [
+              {
+                "completed": 0,
+                "id": "q1",
+                "order": 0,
+                "questName": "Quest 1: Define Your Brand – Who Are You and What Do You Stand For?"
+              },
+              {
+                "completed": 0,
+                "id": "q2",
+                "order": 1,
+                "questName": "Quest 2: Setting Up Your Content Creation Tools – The Right Gear for Your Brand"
+              },
+              {
+                "completed": 0,
+                "id": "q3",
+                "order": 2,
+                "questName": "Quest 3: Building a Content Strategy – What to Post and When"
+              },
+              {
+                "completed": 0,
+                "id": "q4",
+                "order": 3,
+                "questName": "Quest 4: Storytelling Magic – Crafting Stories that Stick"
+              },
+              {
+                "completed": 0,
+                "id": "q5",
+                "order": 4,
+                "questName": "Quest 5: Platform Mastery – TikTok, YouTube, LinkedIn: Know Your Playground"
+              },
+              {
+                "completed": 0,
+                "id": "q6",
+                "order": 5,
+                "questName": "Quest 6: Building Consistency – The Secret to Growing an Engaged Audience"
+              },
+              {
+                "completed": 0,
+                "id": "q7",
+                "order": 6,
+                "questName": "Quest 7: The Power of Visuals – Creating Eye-Catching Graphics and Videos"
+              },
+              {
+                "completed": 0,
+                "id": "q8",
+                "order": 7,
+                "questName": "Quest 8: Engaging Your Community – Turning Followers Into Fans"
+              },
+              {
+                "completed": 0,
+                "id": "q9",
+                "order": 8,
+                "questName": "Quest 9: Monetizing Your Brand – Turning Passion into Profit"
+              },
+              {
+                "completed": 0,
+                "id": "q10",
+                "order": 9,
+                "questName": "Quest 10: Analytics & Growth – Understanding Data to Fuel Your Brand’s Success"
+              },
+              {
+                "completed": 0,
+                "id": "q11",
+                "order": 10,
+                "questName": "Quest 11: Collaborations & Networking – Expand Your Reach Through Partnerships"
+              },
+              {
+                "completed": 0,
+                "id": "q12",
+                "order": 11,
+                "questName": "Quest 12: Staying Authentic – Building a Personal Brand That Lasts"
+              }
+            ],
+            "title": "The Personal Branding Journey: Create, Grow, Monetize!"
+          },
+          {
+            "createdAt": "January 1, 2025 at 3:47:10 PM UTC+5:30",
+            "createdBy": {
+              "email": "yeshigayu@gmail.com",
+              "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+              "username": "DoraKingdom"
+            },
+            "description": "Unlock the world of decentralized applications! Learn the basics of blockchain technology, dive into smart contracts, explore DeFi protocols, and get hands-on experience with NFTs. This journey will make you a Web3 wizard, ready to build the future!",
+            "emoji": "🔗",
+            "isPrivate": false,
+            "quests": [
+              {
+                "completed": 0,
+                "id": "q1",
+                "order": 0,
+                "questName": "Quest 1: Blockchain 101 – Understanding the Basics of Distributed Ledger Technology"
+              },
+              {
+                "completed": 0,
+                "id": "q2",
+                "order": 1,
+                "questName": "Quest 2: Ethereum & Smart Contracts – Your First Contract on the Blockchain"
+              },
+              {
+                "completed": 0,
+                "id": "q3",
+                "order": 2,
+                "questName": "Quest 3: Decentralized Finance (DeFi) – Building Trustless Financial Applications"
+              },
+              {
+                "completed": 0,
+                "id": "q4",
+                "order": 3,
+                "questName": "Quest 4: NFTs – Understanding Non-Fungible Tokens and Their Use Cases"
+              },
+              {
+                "completed": 0,
+                "id": "q5",
+                "order": 4,
+                "questName": "Quest 5: Web3 Development Tools – From MetaMask to Solidity, Essential Tools for Developers"
+              },
+              {
+                "completed": 0,
+                "id": "q6",
+                "order": 5,
+                "questName": "Quest 6: Deploying Your First dApp – A Hands-on Guide to Creating Decentralized Apps"
+              },
+              {
+                "completed": 0,
+                "id": "q7",
+                "order": 6,
+                "questName": "Quest 7: Gas Fees & Layer-2 Solutions – Scaling Your Blockchain Projects"
+              },
+              {
+                "completed": 0,
+                "id": "q8",
+                "order": 7,
+                "questName": "Quest 8: Smart Contract Security – Protecting Your Code from Vulnerabilities"
+              },
+              {
+                "completed": 0,
+                "id": "q9",
+                "order": 8,
+                "questName": "Quest 9: Tokenomics – Designing Tokens for Your Blockchain Projects"
+              },
+              {
+                "completed": 0,
+                "id": "q10",
+                "order": 9,
+                "questName": "Quest 10: The Future of Blockchain – Trends in Web3, DeFi, and NFTs"
+              }
+            ],
+            "title": "Master the Blockchain: Build, Secure, and Innovate with Web3!"
+          },
+          {
+            "createdAt": "January 1, 2025 at 3:47:10 PM UTC+5:30",
+            "createdBy": {
+              "email": "yeshigayu@gmail.com",
+              "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+              "username": "DoraKingdom"
+            },
+            "description": "Ready to turn your skills into cash? This mission guides you through the essentials of freelancing and building a successful side hustle. Whether you're a coder, writer, video editor, or creator, unlock your potential and start earning online. Learn how to market your services, land clients, and scale your side hustle!",
+            "emoji": "💼",
+            "isPrivate": false,
+            "quests": [
+              {
+                "completed": 0,
+                "id": "q1",
+                "order": 0,
+                "questName": "Quest 1: Getting Started with Freelancing – Build Your Online Profile"
+              },
+              {
+                "completed": 0,
+                "id": "q2",
+                "order": 1,
+                "questName": "Quest 2: Finding Your Niche – Choose Your Freelancing Specialization"
+              },
+              {
+                "completed": 0,
+                "id": "q3",
+                "order": 2,
+                "questName": "Quest 3: Building a Portfolio – Showcase Your Work to Attract Clients"
+              },
+              {
+                "completed": 0,
+                "id": "q4",
+                "order": 3,
+                "questName": "Quest 4: Setting Your Rates – How Much Should You Charge for Your Services?"
+              },
+              {
+                "completed": 0,
+                "id": "q5",
+                "order": 4,
+                "questName": "Quest 5: Client Acquisition – How to Find and Approach Clients"
+              },
+              {
+                "completed": 0,
+                "id": "q6",
+                "order": 5,
+                "questName": "Quest 6: Managing Your Time – Freelancing Productivity Hacks"
+              },
+              {
+                "completed": 0,
+                "id": "q7",
+                "order": 6,
+                "questName": "Quest 7: Mastering Communication – The Art of Client Interaction"
+              },
+              {
+                "completed": 0,
+                "id": "q8",
+                "order": 7,
+                "questName": "Quest 8: Freelance Platforms – How to Use Websites Like Upwork, Fiverr, and Freelancer"
+              },
+              {
+                "completed": 0,
+                "id": "q9",
+                "order": 8,
+                "questName": "Quest 9: Upskilling for Success – Learn High-Demand Freelance Skills"
+              },
+              {
+                "completed": 0,
+                "id": "q10",
+                "order": 9,
+                "questName": "Quest 10: Selling Digital Products – How to Create and Market E-books, Courses, and Templates"
+              },
+              {
+                "completed": 0,
+                "id": "q11",
+                "order": 10,
+                "questName": "Quest 11: Scaling Your Side Hustle – Turning Freelance Work into a Full-Time Business"
+              }
+            ],
+            "title": "Freelance & Side Hustle Mastery: From Skills to Earnings"
+          },
+          {
+            "createdAt": "January 1, 2025 at 3:47:10 PM UTC+5:30",
+            "createdBy": {
+              "email": "yeshigayu@gmail.com",
+              "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+              "username": "DoraKingdom"
+            },
+            "description": "Ready to master your money? This mission equips you with simple yet powerful personal finance strategies. From tracking expenses and budgeting to growing wealth, learn how to manage your money wisely and make your financial goals a reality. Get started on your journey to financial freedom today!",
+            "emoji": "💸",
+            "isPrivate": false,
+            "quests": [
+              {
+                "completed": 0,
+                "id": "q1",
+                "order": 0,
+                "questName": "Quest 1: The 50/30/20 Rule – Building Your First Budget"
+              },
+              {
+                "completed": 0,
+                "id": "q2",
+                "order": 1,
+                "questName": "Quest 2: Expense Tracking – Monitor Where Your Money Goes"
+              },
+              {
+                "completed": 0,
+                "id": "q3",
+                "order": 2,
+                "questName": "Quest 3: The Power of Emergency Funds – Why You Need One"
+              },
+              {
+                "completed": 0,
+                "id": "q4",
+                "order": 3,
+                "questName": "Quest 4: Avoiding Debt – Creating a Debt-Free Plan"
+              },
+              {
+                "completed": 0,
+                "id": "q5",
+                "order": 4,
+                "questName": "Quest 5: Saving for the Future – How to Grow Your Wealth"
+              },
+              {
+                "completed": 0,
+                "id": "q6",
+                "order": 5,
+                "questName": "Quest 6: Investing 101 – Starting with Simple Investment Strategies"
+              },
+              {
+                "completed": 0,
+                "id": "q7",
+                "order": 6,
+                "questName": "Quest 7: Smart Spending – How to Cut Unnecessary Expenses"
+              },
+              {
+                "completed": 0,
+                "id": "q8",
+                "order": 7,
+                "questName": "Quest 8: Financial Goal Setting – How to Set and Achieve Your Money Goals"
+              },
+              {
+                "completed": 0,
+                "id": "q9",
+                "order": 8,
+                "questName": "Quest 9: Building Passive Income Streams – Earning While You Sleep"
+              },
+              {
+                "completed": 0,
+                "id": "q10",
+                "order": 9,
+                "questName": "Quest 10: Tax Basics – Understanding Taxes and How to Save on Them"
+              },
+              {
+                "completed": 0,
+                "id": "q11",
+                "order": 10,
+                "questName": "Quest 11: Automating Your Finances – Setting Up Systems for Long-Term Success"
+              }
+            ],
+            "title": "Master Your Money: Personal Finance & Budgeting Essentials"
+          },
+          {
+            "createdAt": "January 1, 2025 at 3:47:10 PM UTC+5:30",
+            "createdBy": {
+              "email": "yeshigayu@gmail.com",
+              "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+              "username": "DoraKingdom"
+            },
+            "description": "Ready to unlock the secrets of powerful negotiation and persuasive communication? From closing high-stakes business deals to securing your next salary increase, this mission will guide you through the strategies to negotiate like a pro. Master the art of persuasion in any situation and get what you want more often!",
+            "emoji": "🗣️",
+            "isPrivate": false,
+            "quests": [
+              {
+                "completed": 0,
+                "id": "q1",
+                "order": 0,
+                "questName": "Quest 1: Master the Basics – The Psychology of Negotiation"
+              },
+              {
+                "completed": 0,
+                "id": "q2",
+                "order": 1,
+                "questName": "Quest 2: Leverage Power Dynamics – How to Control the Conversation"
+              },
+              {
+                "completed": 0,
+                "id": "q3",
+                "order": 2,
+                "questName": "Quest 3: Anchoring Effect – Setting the First Offer to Your Advantage"
+              },
+              {
+                "completed": 0,
+                "id": "q4",
+                "order": 3,
+                "questName": "Quest 4: Win-Win Negotiations – Creating Mutual Value"
+              },
+              {
+                "completed": 0,
+                "id": "q5",
+                "order": 4,
+                "questName": "Quest 5: The Art of Listening – Getting More by Saying Less"
+              },
+              {
+                "completed": 0,
+                "id": "q6",
+                "order": 5,
+                "questName": "Quest 6: Overcoming Objections – Turning No into Yes"
+              },
+              {
+                "completed": 0,
+                "id": "q7",
+                "order": 6,
+                "questName": "Quest 7: Salary Negotiation – Asking for What You Deserve"
+              },
+              {
+                "completed": 0,
+                "id": "q8",
+                "order": 7,
+                "questName": "Quest 8: Building Rapport – Establishing Trust in Any Situation"
+              },
+              {
+                "completed": 0,
+                "id": "q9",
+                "order": 8,
+                "questName": "Quest 9: Persuasive Communication – How to Influence Others Effectively"
+              },
+              {
+                "completed": 0,
+                "id": "q10",
+                "order": 9,
+                "questName": "Quest 10: The Power of Silence – How to Use Pauses to Your Advantage"
+              },
+              {
+                "completed": 0,
+                "id": "q11",
+                "order": 10,
+                "questName": "Quest 11: Handling Difficult People – Turning Conflicts Into Opportunities"
+              }
+            ],
+            "title": "Negotiation & Persuasive Communication – Become a Master Negotiator"
+          },
+          {
+            "createdAt": "January 1, 2025 at 3:47:10 PM UTC+5:30",
+            "createdBy": {
+              "email": "yeshigayu@gmail.com",
+              "userId": "rEly5kzoUFTnaLf7mWFX69jFMep2",
+              "username": "DoraKingdom"
+            },
+            "description": "Ready to take the leap into entrepreneurship? Whether you're full of ideas or just getting started, this mission will guide you through every stage of building a startup—from ideation to growth. Equip yourself with practical tools, resources, and strategies to turn your startup dreams into reality!",
+            "emoji": "🚀",
+            "isPrivate": false,
+            "quests": [
+              {
+                "completed": 0,
+                "id": "q1",
+                "order": 0,
+                "questName": "Quest 1: Startup Mindset – Shifting from Employee to Entrepreneur"
+              },
+              {
+                "completed": 0,
+                "id": "q2",
+                "order": 1,
+                "questName": "Quest 2: Finding Your Idea – The Perfect Problem to Solve"
+              },
+              {
+                "completed": 0,
+                "id": "q3",
+                "order": 2,
+                "questName": "Quest 3: Market Research – Know Your Audience & Competition"
+              },
+              {
+                "completed": 0,
+                "id": "q4",
+                "order": 3,
+                "questName": "Quest 4: Business Model – Choosing the Right Model for Your Startup"
+              },
+              {
+                "completed": 0,
+                "id": "q5",
+                "order": 4,
+                "questName": "Quest 5: MVP – Build a Minimum Viable Product to Test Your Idea"
+              },
+              {
+                "completed": 0,
+                "id": "q6",
+                "order": 5,
+                "questName": "Quest 6: Pitching Your Startup – Creating an Irresistible Pitch Deck"
+              },
+              {
+                "completed": 0,
+                "id": "q7",
+                "order": 6,
+                "questName": "Quest 7: Fundraising – How to Secure Seed Funding"
+              },
+              {
+                "completed": 0,
+                "id": "q8",
+                "order": 7,
+                "questName": "Quest 8: Building a Team – Recruiting the Right People"
+              },
+              {
+                "completed": 0,
+                "id": "q9",
+                "order": 8,
+                "questName": "Quest 9: Marketing Your Startup – Strategies to Gain Early Users"
+              },
+              {
+                "completed": 0,
+                "id": "q10",
+                "order": 9,
+                "questName": "Quest 10: Scaling Up – Growing Beyond the Early Stages"
+              },
+              {
+                "completed": 0,
+                "id": "q11",
+                "order": 10,
+                "questName": "Quest 11: Pivoting – When to Change Course in Your Startup Journey"
+              }
+            ],
+            "title": "How to Build Your Own Startup – From Idea to Execution"
+          }
+    ]
+}
