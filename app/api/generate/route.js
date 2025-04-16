@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from "@google/genai";
 
 export async function POST(request) {
     if (!process.env.GOOGLE_API_KEY) {
@@ -7,17 +7,21 @@ export async function POST(request) {
             headers: { 'Content-Type': 'application/json' }
         });
     }
-
+    
     try {
-        const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
+        // Using the new GoogleGenAI class from the updated SDK
+        const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
+        
         const body = await request.json();
         const prompt = body.prompt;
-
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        let text = response.text();
+        
+        // Using the new models.generateContent method with the latest Gemini model
+        const response = await ai.models.generateContent({
+            model: "gemini-2.0-flash",
+            contents: prompt
+        });
+        
+        let text = response.text;
         
         // Clean up the response if it contains markdown
         if (text.includes('```')) {
@@ -34,16 +38,19 @@ export async function POST(request) {
         } catch (e) {
             throw new Error('Invalid JSON response from AI');
         }
-
+        
         return new Response(JSON.stringify({ text }), {
             status: 200,
             headers: { 'Content-Type': 'application/json' }
         });
     } catch (error) {
         console.error('Error:', error);
-        return new Response(JSON.stringify({ error: error.message }), {
+        return new Response(JSON.stringify({ 
+            error: error.message,
+            details: error.stack
+        }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' }
         });
     }
-} 
+}
